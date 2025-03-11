@@ -1,0 +1,20 @@
+services:
+  api:
+    build: .
+    ports:
+      - "3000:7777"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    environment:
+      - RUST_LOG=debug
+  db:
+    image: surrealdb/surrealdb:latest
+    container_name: db
+    user: root
+    command: start --user root --pass root rocksdb:/mydata/mydatabase.db
+    volumes:
+      - ./surreal_data:/mydata
+    # ports:
+    #   - "8880:8000"
