@@ -16,5 +16,5 @@ services:
     command: start --user root --pass root rocksdb:/mydata/mydatabase.db
     volumes:
       - ./surreal_data:/mydata
-    # ports:
-    #   - "8880:8000"
+    ports:
+      - "8880:8000"

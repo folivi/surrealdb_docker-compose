@@ -11,7 +11,9 @@ use surrealdb::{
 #[tokio::main]
 async fn main() -> Result<()> {
     // let db = any::connect("ws://db:8000").await.unwrap();
-    let db = Surreal::new::<Ws>("ws://db:8000").await.unwrap();
+    let db: Surreal<surrealdb::engine::remote::ws::Client> =
+        Surreal::new::<Ws>("ws://db:8000").await.unwrap();
+    // Surreal::new::<Client>("ws://db:8000").await.unwrap();
     db.signin(Root {
         username: "root",
         password: "root",
