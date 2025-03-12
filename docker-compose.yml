@@ -17,4 +17,33 @@ services:
     volumes:
       - ./surreal_data:/mydata
     ports:
-      - "8880:8000"
+      - "8000:8000"
+
+
+# services:
+#   db:
+#     container_name: db
+#     # healthcheck:
+#     #   test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+#     #   interval: 5s
+#     #   retries: 10
+#     image: surrealdb/surrealdb:latest
+#     command: start --log debug --user root --pass root
+#     ports:
+#       - "8000:8000"
+#     networks:
+#       - app_network
+
+#   api:
+#     build: .
+#     # depends_on: 
+#     #   db:
+#     #     condition: service_healthy
+#     environment:
+#       - RUST_BACKTRACE=1
+#     networks:
+#       - app_network
+
+# networks:
+#   app_network:
+#     driver: bridge
